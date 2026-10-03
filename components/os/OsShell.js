@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import Metadata from "../metadata";
 import OsTreeNav from "./OsTreeNav";
 import OsChrome from "./OsChrome";
@@ -41,7 +41,7 @@ export default function OsShell({
 
   return (
     <div
-      className={`os ${GeistMono.className} ${GeistMono.variable}${
+      className={`os ${GeistSans.className} ${GeistSans.variable}${
         navOpen ? " os-nav-open" : ""
       }`}
     >
@@ -74,10 +74,7 @@ export default function OsShell({
         <div className="os-stage">
           <div className="os-stage-content">{children}</div>
           {hasInfo && (
-            <OsInfoDrawer
-              open={infoOpen}
-              markdown={chrome.infoMarkdown}
-            />
+            <OsInfoDrawer open={infoOpen} markdown={chrome.infoMarkdown} />
           )}
         </div>
       </main>
