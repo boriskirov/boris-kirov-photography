@@ -8,10 +8,10 @@ It begins slowly with spring lingering, until the warmth catches up and the sky 
 
 ## Credits
 
-- Design & photography @boriskirovv & @nuno_das_fotos
-- Foreword by @kaliyaa
-- Printed by @terry.bleu
-- Stamp by @posthumuswinkel
+- Design & photography [@boriskirovv](https://www.instagram.com/boriskirovv/) & [@nuno_das_fotos](https://www.instagram.com/nuno_das_fotos/)
+- Foreword by [@kaliyaa](https://www.instagram.com/kaliyaa/)
+- Printed by [@terry.bleu](https://www.instagram.com/terry.bleu/)
+- Stamp by [@posthumuswinkel](https://www.instagram.com/posthumuswinkel/)
 
 €17.50
 

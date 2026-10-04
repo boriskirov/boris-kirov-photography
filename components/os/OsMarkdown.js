@@ -22,13 +22,13 @@ function renderInline(text) {
         <a
           key={key}
           href={href}
-          className="os-markdown-a"
+          className="os-markdown-a os-link"
           {...(href.toLowerCase().startsWith("http")
             ? { target: "_blank", rel: "noreferrer" }
             : {})}
         >
           {match[1]}
-        </a>
+        </a>,
       );
       key += 1;
     } else {
