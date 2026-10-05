@@ -14,14 +14,9 @@ const collaborators = [
   { name: "advanced.research", image: "/garments/garments-51.jpg" },
   { name: "Wesley Verhoeve" },
   { name: "Camera Japan" },
-  { name: "Dolomite", image: "/outdoors/outdoors-24.png" },
-  { name: "Ferrino Italy", image: "/garments/garments-39.png" },
-  { name: "North Face", image: "/garments/garments-45.png" },
-  { name: "#FR2", image: "/garments/garments-12.png" },
   { name: "That Divine" },
   { name: "raredub", image: "/life/life-70.jpg" },
-  { name: "The Alchemist" },
-  { name: "Boldy James", image: "/life/life-30.png" },
+  { name: "The Alchemist & Boldy James", image: "/life/life-30.png" },
   { name: "Negative Feed", image: "/garments/garments-48.jpg" },
   { name: "Art Cage Budapest" },
   {
@@ -161,7 +156,7 @@ export default function About() {
             </p>
           </details>
           <details>
-            <summary>Selected collaborations and clients</summary>
+            <summary>Clients, features and mentions</summary>
             <ClientMentions />
           </details>
           <details>
