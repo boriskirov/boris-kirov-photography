@@ -100,7 +100,9 @@ export default function OsTreeNav({ onNavigate }) {
                       >
                         <span className="os-tree-guide" aria-hidden="true" />
                         <span className="os-tree-label">{child.label}</span>
-                        <span className="os-tree-count">{child.count}</span>
+                        <span className="os-tree-count">
+                          {child.count === 0 ? "•" : child.count}
+                        </span>
                       </Link>
                     );
                   })}
