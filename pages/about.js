@@ -2,79 +2,109 @@ import Image from "next/image";
 import { useState } from "react";
 import OsShell from "../components/os/OsShell";
 
-const PREVIEW_WIDTH = 220;
-const PREVIEW_OFFSET = 18;
-
 const collaborators = [
   { name: "Fjällräven" },
+  { name: "Next Street Gallery Paris" },
   { name: "Shlag Lab", image: "/garments/garments-61.jpg" },
+  { name: "AT5" },
   { name: "Rapha", image: "/outdoors/outdoors-18.png" },
   { name: "MAAP", image: "/outdoors/outdoors-19.png" },
   { name: "outside.details", image: "/garments/garments-50.jpg" },
   { name: "analogue.amsterdam" },
   { name: "advanced.research", image: "/garments/garments-51.jpg" },
+  { name: "Wesley Verhoeve" },
+  { name: "Camera Japan" },
   { name: "Dolomite", image: "/outdoors/outdoors-24.png" },
   { name: "Ferrino Italy", image: "/garments/garments-39.png" },
   { name: "North Face", image: "/garments/garments-45.png" },
+  { name: "#FR2", image: "/garments/garments-12.png" },
+  { name: "That Divine" },
   { name: "raredub", image: "/life/life-70.jpg" },
+  { name: "The Alchemist" },
   { name: "Boldy James", image: "/life/life-30.png" },
   { name: "Negative Feed", image: "/garments/garments-48.jpg" },
+  { name: "Art Cage Budapest" },
+  {
+    name: "EyeShot Magazine",
+    image: "/about/eyeshot-magazine.jpg",
+    width: 900,
+    height: 596,
+  },
+  { name: "mnfst", image: "/life/life-75.jpg" },
   { name: "Cheetah bikes", image: "/garments/garments-46.jpg" },
-  { name: "AT5" },
   { name: "The Maker Market" },
+  { name: "Haarlem City Blog" },
+  { name: "Atlas Obscura" },
   { name: "Upphotographers" },
+  { name: "FramePress Magazine" },
+  { name: "Dutch Analog" },
+  { name: "Shoot It With Film" },
+  { name: "36h studio" },
   { name: "Vice" },
+  { name: "Bored Panda" },
 ];
+
+const bookshops = [
+  { name: "Classic Paris", href: "https://www.classic-paris.com/" },
+  { name: "Terry Bleu", href: "https://www.terrybleu.com/" },
+  {
+    name: "Athenaeum Boekhandel & Nieuwscentrum Spui",
+    href: "https://athenaeumscheltema.nl/",
+  },
+  { name: "Ruparo Amsterdam", href: "https://www.ruparo.nl/" },
+];
+
+function BookshopLinks({ items = bookshops }) {
+  return (
+    <ul className="os-bookshops">
+      {items.map((shop) => (
+        <li key={shop.href}>
+          <a
+            href={shop.href}
+            className="os-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {shop.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 function ClientMentions({ items = collaborators }) {
   const [active, setActive] = useState(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  function handleMove(event) {
-    const nextX =
-      event.clientX + PREVIEW_OFFSET + PREVIEW_WIDTH > window.innerWidth
-        ? event.clientX - PREVIEW_WIDTH - PREVIEW_OFFSET
-        : event.clientX + PREVIEW_OFFSET;
-
-    setPos({ x: nextX, y: event.clientY + PREVIEW_OFFSET });
-  }
 
   return (
-    <small className="os-client-mentions">
-      {items.map((client, index) => {
+    <ul className="os-client-mentions">
+      {items.map((client) => {
         const hasPreview = Boolean(client.image);
+        const isActive = active === client.name;
 
         return (
-          <span key={client.name}>
-            {index > 0 && <span aria-hidden="true"> • </span>}
-            <span
-              className={
-                hasPreview
-                  ? "os-client-mention has-preview"
-                  : "os-client-mention"
-              }
-              onMouseEnter={() => hasPreview && setActive(client)}
-              onMouseLeave={() => setActive(null)}
-              onMouseMove={hasPreview ? handleMove : undefined}
-            >
-              {client.name}
-            </span>
-          </span>
+          <li
+            key={client.name}
+            className={
+              hasPreview ? "os-client-mention has-preview" : "os-client-mention"
+            }
+            onMouseEnter={() => hasPreview && setActive(client.name)}
+            onMouseLeave={() => setActive(null)}
+          >
+            <span className="os-client-name">{client.name}</span>
+            {isActive && client.image && (
+              <Image
+                src={client.image}
+                alt=""
+                width={client.width || 280}
+                height={client.height || 356}
+                className="os-client-preview-image"
+              />
+            )}
+          </li>
         );
       })}
-
-      {active?.image && (
-        <div className="os-client-preview" style={{ left: pos.x, top: pos.y }}>
-          <Image
-            src={active.image}
-            alt={active.name}
-            width={PREVIEW_WIDTH}
-            height={280}
-            className="os-client-preview-image"
-          />
-        </div>
-      )}
-    </small>
+    </ul>
   );
 }
 
@@ -109,18 +139,34 @@ export default function About() {
           Not always but I mainly shoot people, outdoors, garments, and always
           and forever the everyday life.
         </p>
-        <h4 className="os-panel-title">Contact</h4>
-        <p className="os-meta">
-          Mail:{" "}
-          <a href="mailto:info@boriskirov.photos" className="os-link">
-            info@boriskirov.photos
-          </a>
-        </p>
-
         <div className="os-about-accordion" aria-label="About details">
           <details open>
-            <summary>Selected collaborators</summary>
+            <summary>Contact</summary>
+            <p>
+              Mail:{" "}
+              <a href="mailto:info@boriskirov.photos" className="os-link">
+                info@boriskirov.photos
+              </a>
+            </p>
+            <p>
+              Instagram:{" "}
+              <a
+                href="https://www.instagram.com/boriskirovv/"
+                className="os-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @boriskirovv
+              </a>
+            </p>
+          </details>
+          <details>
+            <summary>Selected collaborations and clients</summary>
             <ClientMentions />
+          </details>
+          <details>
+            <summary>Bookshops and publishing houses</summary>
+            <BookshopLinks />
           </details>
         </div>
       </div>
