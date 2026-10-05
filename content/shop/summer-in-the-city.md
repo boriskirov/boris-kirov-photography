@@ -15,8 +15,15 @@ It begins slowly with spring lingering, until the warmth catches up and the sky 
 
 €17.50
 
-[Email me](mailto:info@boriskirov.photos)
+<details>
+<summary>Locations where you can find this</summary>
+
+- [Athenaeum Amsterdam](https://maps.app.goo.gl/e1QC7tA8kXgM7uyh6) (Sold out)
+- [Terry Bleu](https://maps.app.goo.gl/BWwXusb3G8pPtojY6) (Limited availability)
+- [Black Gold Amsterdam](https://maps.app.goo.gl/aieExbpWd5zo3iwY9) (Sold out)
+- [HOTHEAD (Zines & Sound)](https://maps.app.goo.gl/vpdnunkajNx72uwL9) (Sold out)
+</details>
+
+Want a zine? Reach out via [email](mailto:info@boriskirov.photos) to order one.
 
 [Go to website](https://summer-in-the-city.vercel.app/)
-
-Feel free to reach out if you want a zine.

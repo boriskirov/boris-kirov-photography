@@ -718,6 +718,43 @@ html[data-theme="light"] .os {
   line-height: 1.2;
 }
 
+.os-markdown details {
+  margin: 0 0 12px;
+  border-top: var(--os-border);
+  border-bottom: var(--os-border);
+}
+
+.os-markdown summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 0;
+  color: var(--os-text);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.os-markdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.os-markdown summary::after {
+  content: "+";
+  font-size: 18px;
+  line-height: 1;
+  color: var(--os-text);
+}
+
+.os-markdown details[open] summary::after {
+  content: "−";
+}
+
+.os-markdown details .os-markdown-ul {
+  margin-bottom: 16px;
+}
+
 .os-markdown-ul {
   margin: 0 0 12px;
   padding: 0 0 0 18px;
