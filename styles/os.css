@@ -541,6 +541,57 @@ html[data-theme="light"] .os {
   overflow: hidden;
 }
 
+.os-main:has(.os-index) {
+  overflow: hidden;
+}
+
+.os-index {
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.os-index-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  color: var(--os-text);
+  text-decoration: none;
+}
+
+.os-index-thumb {
+  position: relative;
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  border: var(--os-border);
+  background: var(--os-bg);
+}
+
+.os-index-thumb img {
+  object-fit: cover;
+}
+
+.os-index-card-title {
+  flex: 0 0 auto;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.os-index-card:hover .os-index-card-title {
+  text-decoration: underline;
+}
+
 .os-stage {
   position: relative;
   flex: 1 1 auto;
@@ -914,5 +965,23 @@ html[data-theme="light"] .os {
 
   .os-about-accordion .os-client-mentions {
     --os-client-preview-size: 200px;
+  }
+
+  .os-index {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    gap: 0;
+    padding: 0;
+  }
+
+  .os-index-card {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 16px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
