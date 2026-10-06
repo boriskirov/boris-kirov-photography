@@ -3,7 +3,7 @@ import { useState } from "react";
 import OsShell from "../components/os/OsShell";
 
 const collaborators = [
-  { name: "Fjällräven" },
+  { name: "Fjällräven", image: "/fjallraven/fjall-e4-0.jpeg" },
   { name: "Next Street Gallery Paris" },
   { name: "Shlag Lab", image: "/garments/garments-61.jpg" },
   { name: "AT5" },

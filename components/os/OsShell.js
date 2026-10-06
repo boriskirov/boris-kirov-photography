@@ -16,11 +16,27 @@ export default function OsShell({
   const router = useRouter();
   const [infoOpen, setInfoOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const hasInfo = Boolean(chrome?.infoMarkdown);
 
   useEffect(() => {
-    setInfoOpen(false);
-  }, [chrome?.infoMarkdown, title]);
+    const mediaQuery = window.matchMedia("(max-width: 800px)");
+    const syncMobileState = () => setIsMobile(mediaQuery.matches);
+
+    syncMobileState();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", syncMobileState);
+      return () => mediaQuery.removeEventListener("change", syncMobileState);
+    }
+
+    mediaQuery.addListener(syncMobileState);
+    return () => mediaQuery.removeListener(syncMobileState);
+  }, []);
+
+  useEffect(() => {
+    setInfoOpen(!isMobile);
+  }, [chrome?.infoMarkdown, title, isMobile]);
 
   useEffect(() => {
     setNavOpen(false);
@@ -32,12 +48,21 @@ export default function OsShell({
     const onKeyDown = (event) => {
       if (event.key !== "Escape") return;
       setNavOpen(false);
-      setInfoOpen(false);
+      setInfoOpen(isMobile ? false : true);
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [infoOpen, navOpen]);
+  }, [infoOpen, navOpen, isMobile]);
+
+  const handleToggleInfo = () => {
+    if (isMobile) {
+      setInfoOpen((open) => !open);
+      return;
+    }
+
+    setInfoOpen(true);
+  };
 
   return (
     <div
@@ -66,7 +91,7 @@ export default function OsShell({
             {...chrome}
             hasInfo={hasInfo}
             infoOpen={infoOpen}
-            onToggleInfo={() => setInfoOpen((open) => !open)}
+            onToggleInfo={handleToggleInfo}
             navOpen={navOpen}
             onToggleNav={() => setNavOpen((open) => !open)}
           />
