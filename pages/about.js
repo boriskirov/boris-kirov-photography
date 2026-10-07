@@ -154,6 +154,17 @@ export default function About() {
                 @boriskirovv
               </a>
             </p>
+            <p>
+              Gumroad:{" "}
+              <a
+                href="https://boriskirov.gumroad.com"
+                className="os-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                boriskirov.gumroad.com
+              </a>
+            </p>
           </details>
           <details>
             <summary>Clients, features and mentions</summary>

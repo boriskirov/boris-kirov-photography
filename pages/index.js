@@ -35,7 +35,7 @@ export default function Home() {
       INDEX_CARDS.map((card) => ({
         ...card,
         image: pickRandomImage(card.images),
-      }))
+      })),
     );
   }, []);
 

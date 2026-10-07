@@ -12,6 +12,6 @@
 - Videography: Boris Kirov @boriskirovv
 - Texts: Christo Panchev, Barbara Krulik
 - Art Consultant: Barbara Krulik @barbaraskrulik
-- Marketing & Communications: Ashley Lucio @ashually___
+- Marketing & Communications: Ashley Lucio @ashually\_\_\_
 - Graphic design: Boris Kirov
 - Web design: Atamaweb @atamix_yes
