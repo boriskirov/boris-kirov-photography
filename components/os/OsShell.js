@@ -55,14 +55,7 @@ export default function OsShell({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [infoOpen, navOpen, isMobile]);
 
-  const handleToggleInfo = () => {
-    if (isMobile) {
-      setInfoOpen((open) => !open);
-      return;
-    }
-
-    setInfoOpen(true);
-  };
+  const handleToggleInfo = () => setInfoOpen((open) => !open);
 
   return (
     <div
@@ -99,7 +92,11 @@ export default function OsShell({
         <div className="os-stage">
           <div className="os-stage-content">{children}</div>
           {hasInfo && (
-            <OsInfoDrawer open={infoOpen} markdown={chrome.infoMarkdown} />
+            <OsInfoDrawer
+              open={infoOpen}
+              markdown={chrome.infoMarkdown}
+              headerAction={chrome.infoHeaderAction}
+            />
           )}
         </div>
       </main>

@@ -22,6 +22,16 @@ export default function ShopItem({ item, infoMarkdown }) {
       chrome={{
         title: item.title,
         infoMarkdown: infoMarkdown || null,
+        infoHeaderAction: item.website ? (
+          <a
+            href={item.website}
+            className="os-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Go to website
+          </a>
+        ) : null,
       }}
     >
       <OsImageScroll images={item.images} alt={item.title} />

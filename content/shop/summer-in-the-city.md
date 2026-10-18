@@ -25,5 +25,3 @@ It begins slowly with spring lingering, until the warmth catches up and the sky 
 </details>
 
 Want a zine? Reach out via [email](mailto:info@boriskirov.photos) to order one.
-
-[Go to website](https://summer-in-the-city.vercel.app/)
