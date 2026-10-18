@@ -1,7 +1,8 @@
 /* Minimal OS shell — text + borders only */
 
 .os {
-  --os-border: 1px solid rgba(255, 255, 255, 0.18);
+  --os-border-color: rgba(255, 255, 255, 0.18);
+  --os-border: 1px solid var(--os-border-color);
   --os-bg: #0d0d0d;
   --os-nav-bg: #000;
   --os-text: #f2f2f2;
@@ -44,7 +45,7 @@ html[data-theme="light"] {
 }
 
 html[data-theme="light"] .os {
-  --os-border: 1px solid rgba(0, 0, 0, 0.14);
+  --os-border-color: rgba(0, 0, 0, 0.14);
   --os-bg: #f2f2f2;
   --os-nav-bg: #fff;
   --os-text: #111;
@@ -431,6 +432,18 @@ html[data-theme="light"] .os {
   margin-bottom: 16px;
 }
 
+.os-about-accordion .os-bookshops-intro {
+  padding-bottom: 12px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--os-border-color) 0 4px,
+    transparent 4px 10px
+  );
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 100% 1px;
+}
+
 .os-about-accordion .os-bookshops {
   display: flex;
   flex-direction: column;
@@ -438,6 +451,21 @@ html[data-theme="light"] .os {
   margin: 0 0 16px;
   padding: 0;
   list-style: none;
+}
+
+.os-about-accordion .os-bookshops li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.os-about-accordion .os-bookshops .os-link {
+  min-width: 0;
+}
+
+.os-bookshop-location {
+  flex-shrink: 0;
 }
 
 .os-about-accordion .os-client-mentions {

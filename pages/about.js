@@ -40,13 +40,36 @@ const collaborators = [
 ];
 
 const bookshops = [
-  { name: "Classic Paris", href: "https://www.classic-paris.com/" },
-  { name: "Terry Bleu", href: "https://www.terrybleu.com/" },
+  {
+    name: "stacks bookstore",
+    location: "Tokyo",
+    href: "https://stacksbookstore.jp/",
+  },
+  {
+    name: "Fatbottom",
+    location: "Barcelona",
+    href: "https://fatbottombooks.com/",
+  },
+  {
+    name: "Classic",
+    location: "Paris",
+    href: "https://www.classic-paris.com/",
+  },
+  {
+    name: "Terry Bleu",
+    location: "Amsterdam",
+    href: "https://www.terrybleu.com/",
+  },
   {
     name: "Athenaeum Boekhandel & Nieuwscentrum Spui",
+    location: "Amsterdam",
     href: "https://athenaeumscheltema.nl/",
   },
-  { name: "Ruparo Amsterdam", href: "https://www.ruparo.nl/" },
+  {
+    name: "Ruparo",
+    location: "Amsterdam",
+    href: "https://www.ruparo.nl/",
+  },
 ];
 
 function BookshopLinks({ items = bookshops }) {
@@ -62,6 +85,7 @@ function BookshopLinks({ items = bookshops }) {
           >
             {shop.name}
           </a>
+          <span className="os-bookshop-location">{shop.location}</span>
         </li>
       ))}
     </ul>
@@ -172,6 +196,11 @@ export default function About() {
           </details>
           <details>
             <summary>Bookshops and publishing houses</summary>
+            <p className="os-bookshops-intro">
+              This is an ongoing curated list of locations I really like. I have
+              either already worked with them or am planning to in the future.
+              Support what you like.
+            </p>
             <BookshopLinks />
           </details>
         </div>
