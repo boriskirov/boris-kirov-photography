@@ -6,17 +6,20 @@ import OsTreeNav from "./OsTreeNav";
 import OsChrome from "./OsChrome";
 import OsInfoDrawer from "./OsInfoDrawer";
 import OsThemeSwitch from "./OsThemeSwitch";
+import { OsViewContext } from "./OsViewContext";
 
 export default function OsShell({
   title = "OS",
   description = "Boris Kirov",
   chrome = null,
+  initialViewMode = "image",
   children,
 }) {
   const router = useRouter();
   const [infoOpen, setInfoOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewMode, setViewMode] = useState(initialViewMode);
   const hasInfo = Boolean(chrome?.infoMarkdown);
 
   useEffect(() => {
@@ -56,6 +59,7 @@ export default function OsShell({
   }, [infoOpen, navOpen, isMobile]);
 
   const handleToggleInfo = () => setInfoOpen((open) => !open);
+  const handleChangeView = (mode) => setViewMode(mode);
 
   return (
     <div
@@ -85,12 +89,16 @@ export default function OsShell({
             hasInfo={hasInfo}
             infoOpen={infoOpen}
             onToggleInfo={handleToggleInfo}
+            viewMode={viewMode}
+            onChangeView={handleChangeView}
             navOpen={navOpen}
             onToggleNav={() => setNavOpen((open) => !open)}
           />
         )}
         <div className="os-stage">
-          <div className="os-stage-content">{children}</div>
+          <OsViewContext.Provider value={viewMode}>
+            <div className="os-stage-content">{children}</div>
+          </OsViewContext.Provider>
           {hasInfo && (
             <OsInfoDrawer
               open={infoOpen}

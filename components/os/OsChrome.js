@@ -28,11 +28,14 @@ export default function OsChrome({
   seeMoreHref = null,
   navOpen = false,
   onToggleNav,
+  viewMode,
+  onChangeView,
+  showViewToggle = false,
 }) {
   const router = useRouter();
   const crumbs = getCrumbs(router.asPath, title);
 
-  if (!crumbs.length && !hasInfo && !seeMoreHref) return null;
+  if (!crumbs.length && !hasInfo && !seeMoreHref && !showViewToggle) return null;
 
   return (
     <header className="os-chrome">
@@ -75,6 +78,64 @@ export default function OsChrome({
           <Link href={seeMoreHref} className="os-chrome-info">
             See more
           </Link>
+        )}
+
+        {showViewToggle && (
+          <fieldset className="os-theme os-view-switch">
+            <legend className="os-sr">Select a view:</legend>
+            <span className="os-theme-option">
+              <input
+                type="radio"
+                name="os-view"
+                value="image"
+                aria-label="Image view"
+                title="Image view"
+                checked={viewMode === "image"}
+                onChange={() => onChangeView("image")}
+              />
+              <label title="Image view">
+                <span className="os-sr">Image view</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 256 256"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,48H208v77.38l-24.69-24.7a16,16,0,0,0-22.62,0L53.37,208H48ZM208,208H76l96-96,36,36v60ZM96,120A24,24,0,1,0,72,96,24,24,0,0,0,96,120Zm0-32a8,8,0,1,1-8,8A8,8,0,0,1,96,88Z"
+                  />
+                </svg>
+              </label>
+            </span>
+            <span className="os-theme-option">
+              <input
+                type="radio"
+                name="os-view"
+                value="grid"
+                aria-label="Grid view"
+                title="Grid view"
+                checked={viewMode === "grid"}
+                onChange={() => onChangeView("grid")}
+              />
+              <label title="Grid view">
+                <span className="os-sr">Grid view</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 256 256"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M208,32H80A16,16,0,0,0,64,48V64H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V192h16a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM80,48H208v69.38l-16.7-16.7a16,16,0,0,0-22.62,0L93.37,176H80Zm96,160H48V80H64v96a16,16,0,0,0,16,16h96Zm32-32H116l64-64,28,28v36Zm-88-64A24,24,0,1,0,96,88,24,24,0,0,0,120,112Zm0-32a8,8,0,1,1-8,8A8,8,0,0,1,120,80Z"
+                  />
+                </svg>
+              </label>
+            </span>
+          </fieldset>
         )}
 
         {hasInfo && (

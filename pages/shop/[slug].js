@@ -1,5 +1,5 @@
 import OsShell from "../../components/os/OsShell";
-import OsImageScroll from "../../components/os/OsImageScroll";
+import OsImageCollection from "../../components/os/OsImageCollection";
 import { SHOP, getShopItem } from "../../lib/shop";
 import { getShopInfo } from "../../lib/shop-info";
 
@@ -22,6 +22,7 @@ export default function ShopItem({ item, infoMarkdown }) {
       chrome={{
         title: item.title,
         infoMarkdown: infoMarkdown || null,
+        showViewToggle: true,
         infoHeaderAction: item.website ? (
           <a
             href={item.website}
@@ -34,7 +35,7 @@ export default function ShopItem({ item, infoMarkdown }) {
         ) : null,
       }}
     >
-      <OsImageScroll images={item.images} alt={item.title} />
+      <OsImageCollection images={item.images} alt={item.title} />
     </OsShell>
   );
 }

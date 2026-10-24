@@ -138,6 +138,7 @@ export default function OsThemeSwitch() {
               name="os-theme"
               value={value}
               aria-label={value}
+              title={`${value[0].toUpperCase()}${value.slice(1)} theme`}
               checked={choice === value}
               onChange={() => select(value)}
             />

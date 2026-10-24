@@ -1,5 +1,5 @@
 import OsShell from "../../components/os/OsShell";
-import OsImageScroll from "../../components/os/OsImageScroll";
+import OsImageCollection from "../../components/os/OsImageCollection";
 import { STILLS, getStill } from "../../lib/stills";
 
 export default function StillItem({ still }) {
@@ -20,9 +20,10 @@ export default function StillItem({ still }) {
       description={still.description}
       chrome={{
         title: still.title,
+        showViewToggle: true,
       }}
     >
-      <OsImageScroll images={still.images} alt={still.title} />
+      <OsImageCollection images={still.images} alt={still.title} />
     </OsShell>
   );
 }

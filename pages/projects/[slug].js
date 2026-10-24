@@ -1,5 +1,5 @@
 import OsShell from "../../components/os/OsShell";
-import OsImageScroll from "../../components/os/OsImageScroll";
+import OsImageCollection from "../../components/os/OsImageCollection";
 import { PROJECTS, getProject } from "../../lib/projects";
 import { getProjectInfo } from "../../lib/project-info";
 
@@ -22,9 +22,10 @@ export default function ProjectItem({ project, infoMarkdown }) {
       chrome={{
         title: project.title,
         infoMarkdown: infoMarkdown || null,
+        showViewToggle: true,
       }}
     >
-      <OsImageScroll images={project.images} alt={project.title} />
+      <OsImageCollection images={project.images} alt={project.title} />
     </OsShell>
   );
 }
