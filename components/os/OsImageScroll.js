@@ -1,23 +1,13 @@
 import { useEffect, useState } from "react";
 import OsCliLoader from "./OsCliLoader";
-
-function getFileName(src) {
-  if (!src) return "";
-  return src.split("/").pop() || src;
-}
+import OsImageFooter from "./OsImageFooter";
 
 function isVideo(src) {
   return /\.(mp4|webm|mov)(\?.*)?$/i.test(src);
 }
 
-function formatSizeKb(bytes) {
-  if (!Number.isFinite(bytes) || bytes < 0) return null;
-  return `${Math.max(1, Math.round(bytes / 1024))} KB`;
-}
-
 export default function OsImageScroll({ images = [], alt = "", onIndexChange }) {
   const [index, setIndex] = useState(0);
-  const [sizeLabel, setSizeLabel] = useState(null);
 
   useEffect(() => {
     setIndex(0);
@@ -46,31 +36,6 @@ export default function OsImageScroll({ images = [], alt = "", onIndexChange }) 
   }, [images]);
 
   const current = images[index] || "";
-  const fileName = getFileName(current);
-
-  useEffect(() => {
-    if (!current) {
-      setSizeLabel(null);
-      return;
-    }
-
-    let cancelled = false;
-    setSizeLabel(null);
-
-    fetch(current, { method: "HEAD" })
-      .then((response) => {
-        if (cancelled) return;
-        const length = Number(response.headers.get("content-length"));
-        setSizeLabel(formatSizeKb(length));
-      })
-      .catch(() => {
-        if (!cancelled) setSizeLabel(null);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [current]);
 
   if (!images.length) {
     return (
@@ -111,17 +76,10 @@ export default function OsImageScroll({ images = [], alt = "", onIndexChange }) 
         />
       )}
 
-      <footer className="os-viewer-footer">
-        <span className="os-viewer-footer-count">
-          {index + 1} / {images.length}
-        </span>
-        <div className="os-viewer-footer-meta">
-          <span className="os-viewer-footer-name">{fileName}</span>
-          {sizeLabel && (
-            <span className="os-viewer-footer-size">{sizeLabel}</span>
-          )}
-        </div>
-      </footer>
+      <OsImageFooter
+        src={current}
+        count={`${index + 1} / ${images.length}`}
+      />
 
       <button
         type="button"

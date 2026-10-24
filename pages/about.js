@@ -41,6 +41,11 @@ const collaborators = [
 
 const bookshops = [
   {
+    name: "Do You Read Me?",
+    location: "Berlin",
+    href: "http://www.doyoureadme.de/",
+  },
+  {
     name: "stacks bookstore",
     location: "Tokyo",
     href: "https://stacksbookstore.jp/",
