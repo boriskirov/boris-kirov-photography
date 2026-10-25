@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { STILLS } from "../../lib/stills";
 import { PROJECTS } from "../../lib/projects";
 import { SHOP } from "../../lib/shop";
 import { folderShouldExpand, useOsNavState } from "./OsNavState";
@@ -11,12 +10,7 @@ const TREE = [
   {
     id: "stills",
     label: "Stills",
-    children: STILLS.map((item) => ({
-      id: `stills-${item.slug}`,
-      label: item.title,
-      count: item.images.length,
-      href: `/stills/${item.slug}`,
-    })),
+    href: "/stills",
   },
   {
     id: "projects",
@@ -125,6 +119,9 @@ export default function OsTreeNav({ onNavigate }) {
           >
             <span className="os-tree-spacer" aria-hidden="true" />
             <span className="os-tree-label">{node.label}</span>
+            {node.count != null && (
+              <span className="os-tree-count">{node.count}</span>
+            )}
           </Link>
         );
       })}

@@ -3,7 +3,7 @@ import OsShell from "../components/os/OsShell";
 import { PROJECTS } from "../lib/projects";
 import { STILLS } from "../lib/stills";
 
-const INDEX_IMAGES = [...STILLS, ...PROJECTS].flatMap((item) => item.images);
+const INDEX_IMAGES = [...STILLS.images, ...PROJECTS.flatMap((item) => item.images)];
 
 export default function Home() {
   return (
