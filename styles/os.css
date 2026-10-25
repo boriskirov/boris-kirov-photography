@@ -666,7 +666,7 @@ html[data-theme="light"] .os {
   width: auto !important;
   height: auto !important;
   max-width: calc(100% - 32px) !important;
-  max-height: calc(100% - 256px - 32px) !important;
+  max-height: calc(100% - 156px - 32px) !important;
   object-fit: contain;
   border: none !important;
   border-radius: 0 !important;
