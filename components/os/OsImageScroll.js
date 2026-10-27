@@ -1,13 +1,20 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import OsCliLoader from "./OsCliLoader";
 import OsImageFooter from "./OsImageFooter";
+import OsImageIcon from "./OsImageIcon";
 
 function isVideo(src) {
   return /\.(mp4|webm|mov)(\?.*)?$/i.test(src);
 }
 
-export default function OsImageScroll({ images = [], alt = "", onIndexChange }) {
+export default function OsImageScroll({
+  images = [],
+  alt = "",
+  onIndexChange,
+}) {
   const [index, setIndex] = useState(0);
+  const [loadedImage, setLoadedImage] = useState(null);
 
   useEffect(() => {
     setIndex(0);
@@ -50,7 +57,9 @@ export default function OsImageScroll({ images = [], alt = "", onIndexChange }) 
   }
 
   const goPrev = () =>
-    setIndex((currentIndex) => (currentIndex - 1 + images.length) % images.length);
+    setIndex(
+      (currentIndex) => (currentIndex - 1 + images.length) % images.length,
+    );
   const goNext = () =>
     setIndex((currentIndex) => (currentIndex + 1) % images.length);
 
@@ -67,19 +76,29 @@ export default function OsImageScroll({ images = [], alt = "", onIndexChange }) 
           playsInline
         />
       ) : (
-        <img
-          key={current}
-          src={current}
-          alt={alt ? `${alt} ${index + 1}` : ""}
-          className="os-viewer-image"
-          draggable={false}
-        />
+        <div className="os-viewer-image-frame">
+          {loadedImage !== current && (
+            <div className="os-viewer-image-placeholder" aria-hidden="true">
+              <OsImageIcon size={24} />
+            </div>
+          )}
+          <Image
+            key={current}
+            src={current}
+            alt={alt ? `${alt} ${index + 1}` : ""}
+            className={`os-viewer-image${
+              loadedImage === current ? " is-loaded" : ""
+            }`}
+            fill
+            sizes="100vw"
+            priority={index === 0}
+            onLoad={() => setLoadedImage(current)}
+            draggable={false}
+          />
+        </div>
       )}
 
-      <OsImageFooter
-        src={current}
-        count={`${index + 1} / ${images.length}`}
-      />
+      <OsImageFooter src={current} count={`${index + 1} / ${images.length}`} />
 
       <button
         type="button"

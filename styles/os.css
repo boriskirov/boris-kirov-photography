@@ -656,7 +656,6 @@ html[data-theme="light"] .os {
   overflow: hidden;
 }
 
-.os .os-viewer-image,
 .os video.os-viewer-image {
   position: absolute;
   top: 50%;
@@ -672,6 +671,58 @@ html[data-theme="light"] .os {
   border-radius: 0 !important;
   user-select: none;
   pointer-events: none;
+}
+
+.os-viewer-image-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 32px);
+  height: calc(100% - 188px);
+  transform: translate(-50%, -50%);
+  background: var(--os-bg);
+}
+
+.os-viewer-image-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--os-text);
+}
+
+.os-viewer-image-placeholder svg {
+  opacity: 0.35;
+  animation: os-image-placeholder-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes os-image-placeholder-shimmer {
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .os-viewer-image-placeholder svg {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+.os img.os-viewer-image {
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  border: none !important;
+  border-radius: 0 !important;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.os img.os-viewer-image.is-loaded {
+  opacity: 1;
 }
 
 .os-viewer-footer {
